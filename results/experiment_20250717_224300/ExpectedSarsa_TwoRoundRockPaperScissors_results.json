@@ -1,0 +1,15 @@
+{
+  "experiment_name": "ExpectedSarsa_TwoRoundRockPaperScissors",
+  "algorithm": "ExpectedSarsa",
+  "environment": "TwoRoundRockPaperScissors",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "episodes": 2000,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "epsilon_decay": 0.995
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 2000,
+    "final_policy": {

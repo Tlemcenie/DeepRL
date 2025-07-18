@@ -1,0 +1,14 @@
+{
+  "experiment_name": "PolicyIteration_GridWorld",
+  "algorithm": "PolicyIteration",
+  "environment": "GridWorld",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "theta": 1e-06,
+    "episodes": 1
+  },
+  "env_params": {},
+  "training_results": {
+    "iterations": 7,
+    "converged": true,
+    "final_value_function": {

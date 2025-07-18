@@ -1,0 +1,15 @@
+{
+  "experiment_name": "DynaQ_GridWorld",
+  "algorithm": "DynaQ",
+  "environment": "GridWorld",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "episodes": 500,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "planning_steps": 5
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 500,
+    "final_policy": {

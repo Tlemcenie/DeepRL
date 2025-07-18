@@ -1,0 +1,13 @@
+{
+  "experiment_name": "OffPolicyMonteCarlo_TwoRoundRockPaperScissors",
+  "algorithm": "OffPolicyMonteCarlo",
+  "environment": "TwoRoundRockPaperScissors",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "episodes": 5000,
+    "behavior_epsilon": 0.3
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 5000,
+    "final_policy": {
