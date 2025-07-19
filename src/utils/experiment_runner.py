@@ -86,7 +86,22 @@ class ExperimentRunner:
         
         # Évaluation
         print("\nÉvaluation de la politique apprise...")
-        evaluation_results = algo.evaluate_policy(num_episodes=num_evaluation_episodes)
+        try:
+            evaluation_results = algo.evaluate_policy(num_episodes=num_evaluation_episodes)
+        except Exception as e:
+            print(f"Erreur lors de l'évaluation: {e}")
+            # Retourner un résultat d'erreur au lieu de planter
+            return {
+                'experiment_name': experiment_name,
+                'algorithm': algorithm_class.__name__,
+                'environment': env_class.__name__,
+                'algorithm_params': algorithm_params,
+                'env_params': env_params,
+                'error': str(e),
+                'training_time': training_time,
+                'evaluation': {'mean_reward': 0.0, 'std_reward': 0.0, 'success_rate': 0.0},
+                'timestamp': datetime.now().isoformat()
+            }
         
         # Résultats complets
         results = {
@@ -97,6 +112,7 @@ class ExperimentRunner:
             'env_params': env_params,
             'training_results': training_results,
             'evaluation_results': evaluation_results,
+            'evaluation': evaluation_results,  # Alias pour compatibilité
             'training_time': training_time,
             'training_history': algo.training_history,
             'timestamp': datetime.now().isoformat()
@@ -282,11 +298,29 @@ class ExperimentRunner:
         
         return df
         
+    def _convert_keys_for_json(self, obj):
+        """Convertit les clés tuple en string pour la sérialisation JSON."""
+        if isinstance(obj, dict):
+            new_dict = {}
+            for k, v in obj.items():
+                # Convertir les clés tuple en string
+                if isinstance(k, tuple):
+                    k = str(k)
+                new_dict[k] = self._convert_keys_for_json(v)
+            return new_dict
+        elif isinstance(obj, list):
+            return [self._convert_keys_for_json(item) for item in obj]
+        else:
+            return obj
+    
     def _save_experiment_results(self, results: Dict[str, Any], experiment_name: str):
         """Sauvegarde les résultats d'une expérimentation."""
         # Sauvegarder en JSON (sans l'historique complet qui peut être volumineux)
         results_json = results.copy()
         results_json.pop('training_history', None)
+        
+        # Convertir les clés tuple pour JSON
+        results_json = self._convert_keys_for_json(results_json)
         
         json_path = os.path.join(self.experiment_dir, f"{experiment_name}_results.json")
         with open(json_path, 'w') as f:
