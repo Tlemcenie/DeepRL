@@ -1,0 +1,37 @@
+{
+  "experiment_name": "Sarsa_TwoRoundRockPaperScissors_run1",
+  "algorithm": "Sarsa",
+  "environment": "TwoRoundRockPaperScissors",
+  "algorithm_params": {
+    "episodes": 1500,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "epsilon_decay": 0.995
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 1500,
+    "final_policy_size": 4,
+    "final_q_function_size": 12,
+    "final_epsilon": 0.01
+  },
+  "evaluation_results": {
+    "mean_reward": 1.02,
+    "std_reward": 0.7997499609252883,
+    "min_reward": "0",
+    "max_reward": "2",
+    "mean_episode_length": 2.0,
+    "success_rate": 0.69
+  },
+  "evaluation": {
+    "mean_reward": 1.02,
+    "std_reward": 0.7997499609252883,
+    "min_reward": "0",
+    "max_reward": "2",
+    "mean_episode_length": 2.0,
+    "success_rate": 0.69
+  },
+  "training_time": 0.03473615646362305,
+  "timestamp": "2025-07-19T19:12:19.351893"
+}

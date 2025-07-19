@@ -1,0 +1,38 @@
+{
+  "experiment_name": "DynaQ_MontyHallLevel2_run1",
+  "algorithm": "DynaQ",
+  "environment": "MontyHallLevel2",
+  "algorithm_params": {
+    "episodes": 800,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "planning_steps": 10
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 800,
+    "final_policy_size": 65,
+    "final_q_function_size": 324,
+    "total_planning_steps": 32000,
+    "model_size": 86
+  },
+  "evaluation_results": {
+    "mean_reward": 0.18,
+    "std_reward": 0.38418745424597095,
+    "min_reward": 0.0,
+    "max_reward": 1.0,
+    "mean_episode_length": 4.0,
+    "success_rate": 0.18
+  },
+  "evaluation": {
+    "mean_reward": 0.18,
+    "std_reward": 0.38418745424597095,
+    "min_reward": 0.0,
+    "max_reward": 1.0,
+    "mean_episode_length": 4.0,
+    "success_rate": 0.18
+  },
+  "training_time": 0.1463148593902588,
+  "timestamp": "2025-07-19T19:12:24.513276"
+}

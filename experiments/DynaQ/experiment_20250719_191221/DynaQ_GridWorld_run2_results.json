@@ -1,0 +1,38 @@
+{
+  "experiment_name": "DynaQ_GridWorld_run2",
+  "algorithm": "DynaQ",
+  "environment": "GridWorld",
+  "algorithm_params": {
+    "episodes": 800,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "planning_steps": 10
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 800,
+    "final_policy_size": 23,
+    "final_q_function_size": 92,
+    "total_planning_steps": 67380,
+    "model_size": 84
+  },
+  "evaluation_results": {
+    "mean_reward": 0.9300000000000002,
+    "std_reward": 2.220446049250313e-16,
+    "min_reward": 0.9299999999999999,
+    "max_reward": 0.9299999999999999,
+    "mean_episode_length": 8.0,
+    "success_rate": 1.0
+  },
+  "evaluation": {
+    "mean_reward": 0.9300000000000002,
+    "std_reward": 2.220446049250313e-16,
+    "min_reward": 0.9299999999999999,
+    "max_reward": 0.9299999999999999,
+    "mean_episode_length": 8.0,
+    "success_rate": 1.0
+  },
+  "training_time": 0.24374103546142578,
+  "timestamp": "2025-07-19T19:12:22.587765"
+}

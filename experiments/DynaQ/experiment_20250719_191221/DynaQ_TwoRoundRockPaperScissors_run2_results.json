@@ -1,0 +1,38 @@
+{
+  "experiment_name": "DynaQ_TwoRoundRockPaperScissors_run2",
+  "algorithm": "DynaQ",
+  "environment": "TwoRoundRockPaperScissors",
+  "algorithm_params": {
+    "episodes": 800,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "planning_steps": 10
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 800,
+    "final_policy_size": 4,
+    "final_q_function_size": 12,
+    "total_planning_steps": 16000,
+    "model_size": 11
+  },
+  "evaluation_results": {
+    "mean_reward": 0.99,
+    "std_reward": 0.8425556361451746,
+    "min_reward": "0",
+    "max_reward": "2",
+    "mean_episode_length": 2.0,
+    "success_rate": 0.64
+  },
+  "evaluation": {
+    "mean_reward": 0.99,
+    "std_reward": 0.8425556361451746,
+    "min_reward": "0",
+    "max_reward": "2",
+    "mean_episode_length": 2.0,
+    "success_rate": 0.64
+  },
+  "training_time": 0.05507493019104004,
+  "timestamp": "2025-07-19T19:12:23.341246"
+}

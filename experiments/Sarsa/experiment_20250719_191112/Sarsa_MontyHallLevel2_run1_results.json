@@ -1,0 +1,15 @@
+{
+  "experiment_name": "Sarsa_MontyHallLevel2_run1",
+  "algorithm": "Sarsa",
+  "environment": "MontyHallLevel2",
+  "algorithm_params": {
+    "episodes": 1500,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "epsilon_decay": 0.995
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 1500,
+    "final_policy": {

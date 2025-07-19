@@ -1,0 +1,34 @@
+{
+  "experiment_name": "PolicyIteration_GridWorld_run1",
+  "algorithm": "PolicyIteration",
+  "environment": "GridWorld",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "theta": 1e-06
+  },
+  "env_params": {},
+  "training_results": {
+    "iterations": 6,
+    "converged": true,
+    "final_value_function_size": 25,
+    "final_policy_size": 25
+  },
+  "evaluation_results": {
+    "mean_reward": 0.9300000000000002,
+    "std_reward": 2.220446049250313e-16,
+    "min_reward": 0.9299999999999999,
+    "max_reward": 0.9299999999999999,
+    "mean_episode_length": 8.0,
+    "success_rate": 1.0
+  },
+  "evaluation": {
+    "mean_reward": 0.9300000000000002,
+    "std_reward": 2.220446049250313e-16,
+    "min_reward": 0.9299999999999999,
+    "max_reward": 0.9299999999999999,
+    "mean_episode_length": 8.0,
+    "success_rate": 1.0
+  },
+  "training_time": 0.21738481521606445,
+  "timestamp": "2025-07-19T19:12:25.485801"
+}

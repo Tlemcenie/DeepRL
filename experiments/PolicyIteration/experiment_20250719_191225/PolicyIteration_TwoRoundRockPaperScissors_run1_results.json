@@ -1,0 +1,34 @@
+{
+  "experiment_name": "PolicyIteration_TwoRoundRockPaperScissors_run1",
+  "algorithm": "PolicyIteration",
+  "environment": "TwoRoundRockPaperScissors",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "theta": 1e-06
+  },
+  "env_params": {},
+  "training_results": {
+    "iterations": 2,
+    "converged": true,
+    "final_value_function_size": 4,
+    "final_policy_size": 4
+  },
+  "evaluation_results": {
+    "mean_reward": -0.09,
+    "std_reward": 0.8257723657279894,
+    "min_reward": "-1",
+    "max_reward": "1",
+    "mean_episode_length": 2.0,
+    "success_rate": 0.3
+  },
+  "evaluation": {
+    "mean_reward": -0.09,
+    "std_reward": 0.8257723657279894,
+    "min_reward": "-1",
+    "max_reward": "1",
+    "mean_episode_length": 2.0,
+    "success_rate": 0.3
+  },
+  "training_time": 0.0004780292510986328,
+  "timestamp": "2025-07-19T19:12:25.540483"
+}

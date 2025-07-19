@@ -1,0 +1,15 @@
+{
+  "experiment_name": "DynaQ_MontyHallLevel2_run2",
+  "algorithm": "DynaQ",
+  "environment": "MontyHallLevel2",
+  "algorithm_params": {
+    "episodes": 800,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "planning_steps": 10
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 800,
+    "final_policy": {

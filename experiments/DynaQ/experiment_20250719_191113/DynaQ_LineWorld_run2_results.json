@@ -1,0 +1,22 @@
+{
+  "experiment_name": "DynaQ_LineWorld_run2",
+  "algorithm": "DynaQ",
+  "environment": "LineWorld",
+  "algorithm_params": {
+    "episodes": 800,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "planning_steps": 10
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 800,
+    "final_policy": {
+      "1": "1",
+      "2": "1",
+      "3": "1",
+      "4": "1",
+      "5": "1"
+    },
+    "final_q_function": {
