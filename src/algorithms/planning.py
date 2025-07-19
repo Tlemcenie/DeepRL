@@ -68,7 +68,9 @@ class DynaQ(BaseAlgorithm):
         self.planning_steps = kwargs.get('planning_steps', 5)  # Nombre de pas de planification
         
         # Initialiser Q(s,a) et le modèle
-        self.q_function = defaultdict(lambda: 0.0)
+        def zero_value():
+            return 0.0
+        self.q_function = defaultdict(zero_value)
         self.model = Model()
         
     def select_action_epsilon_greedy(self, state, epsilon=None):

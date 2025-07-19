@@ -25,7 +25,9 @@ class TDBase(BaseAlgorithm):
         self.epsilon_min = kwargs.get('epsilon_min', 0.01)  # Epsilon minimum
         
         # Initialiser Q(s,a)
-        self.q_function = defaultdict(lambda: 0.0)
+        def zero_value():
+            return 0.0
+        self.q_function = defaultdict(zero_value)
         
     def select_action_epsilon_greedy(self, state, epsilon=None):
         """

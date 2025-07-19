@@ -217,7 +217,9 @@ class ResultsAnalyzer:
         Returns:
             Dictionnaire avec l'analyse de sensibilité
         """
-        sensitivity = defaultdict(lambda: defaultdict(list))
+        def create_default_list():
+            return defaultdict(list)
+        sensitivity = defaultdict(create_default_list)
         
         # Grouper par algorithme et environnement
         for result in self.results:

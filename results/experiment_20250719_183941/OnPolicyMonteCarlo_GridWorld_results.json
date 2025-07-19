@@ -1,0 +1,14 @@
+{
+  "experiment_name": "OnPolicyMonteCarlo_GridWorld",
+  "algorithm": "OnPolicyMonteCarlo",
+  "environment": "GridWorld",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "episodes": 5000,
+    "epsilon": 0.1,
+    "alpha": null
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 5000,
+    "final_policy": {

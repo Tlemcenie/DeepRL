@@ -1,0 +1,54 @@
+{
+  "experiment_name": "test_fix_QLearning_LineWorld",
+  "algorithm": "QLearning",
+  "environment": "LineWorld",
+  "algorithm_params": {
+    "episodes": 100,
+    "alpha": 0.1,
+    "epsilon": 0.1,
+    "gamma": 0.99,
+    "epsilon_decay": 0.995
+  },
+  "env_params": {},
+  "training_results": {
+    "episodes_trained": 100,
+    "final_policy": {
+      "1": "1",
+      "2": "1",
+      "3": "1",
+      "4": "1",
+      "5": "1"
+    },
+    "final_q_function": {
+      "(3, 0)": 0.022914217386368764,
+      "(3, 1)": 0.9782108587878026,
+      "(2, 0)": 0.0,
+      "(2, 1)": 0.2385633849944741,
+      "(1, 0)": -0.1,
+      "(1, 1)": 0.0,
+      "(4, 0)": 0.01960364091537349,
+      "(4, 1)": 0.9896849683484665,
+      "(5, 0)": 0.21988628244202257,
+      "(5, 1)": 0.9999704873345693
+    },
+    "final_epsilon": 0.06057704364907282
+  },
+  "evaluation_results": {
+    "mean_reward": 1.0,
+    "std_reward": 0.0,
+    "min_reward": 1.0,
+    "max_reward": 1.0,
+    "mean_episode_length": 3.0,
+    "success_rate": 1.0
+  },
+  "evaluation": {
+    "mean_reward": 1.0,
+    "std_reward": 0.0,
+    "min_reward": 1.0,
+    "max_reward": 1.0,
+    "mean_episode_length": 3.0,
+    "success_rate": 1.0
+  },
+  "training_time": 0.02483987808227539,
+  "timestamp": "2025-07-19T19:03:48.221044"
+}

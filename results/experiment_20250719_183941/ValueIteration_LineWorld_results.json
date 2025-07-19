@@ -1,0 +1,43 @@
+{
+  "experiment_name": "ValueIteration_LineWorld",
+  "algorithm": "ValueIteration",
+  "environment": "LineWorld",
+  "algorithm_params": {
+    "gamma": 0.99,
+    "theta": 1e-06,
+    "episodes": 1
+  },
+  "env_params": {},
+  "training_results": {
+    "iterations": 7,
+    "converged": true,
+    "final_value_function": {
+      "0": 0.9509900498999999,
+      "1": 0.96059601,
+      "2": 0.9702989999999999,
+      "3": 0.9801,
+      "4": 0.99,
+      "5": 1.0,
+      "6": 1.0
+    },
+    "final_policy": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1
+    }
+  },
+  "evaluation_results": {
+    "mean_reward": 1.0,
+    "std_reward": 0.0,
+    "min_reward": 1.0,
+    "max_reward": 1.0,
+    "mean_episode_length": 3.0,
+    "success_rate": 1.0
+  },
+  "training_time": 0.00016164779663085938,
+  "timestamp": "2025-07-19T18:39:41.987572"
+}

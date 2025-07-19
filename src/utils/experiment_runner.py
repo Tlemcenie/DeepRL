@@ -88,20 +88,36 @@ class ExperimentRunner:
         print("\nÉvaluation de la politique apprise...")
         try:
             evaluation_results = algo.evaluate_policy(num_episodes=num_evaluation_episodes)
+            print(f"✅ Évaluation réussie: {evaluation_results['mean_reward']:.3f}")
         except Exception as e:
             print(f"Erreur lors de l'évaluation: {e}")
-            # Retourner un résultat d'erreur au lieu de planter
-            return {
-                'experiment_name': experiment_name,
-                'algorithm': algorithm_class.__name__,
-                'environment': env_class.__name__,
-                'algorithm_params': algorithm_params,
-                'env_params': env_params,
-                'error': str(e),
-                'training_time': training_time,
-                'evaluation': {'mean_reward': 0.0, 'std_reward': 0.0, 'success_rate': 0.0},
-                'timestamp': datetime.now().isoformat()
+            evaluation_results = {
+                'mean_reward': 0.0, 
+                'std_reward': 0.0, 
+                'success_rate': 0.0,
+                'error': str(e)
             }
+        
+        # Copier l'historique d'entraînement de manière sûre
+        training_history_safe = {}
+        try:
+            for key, value in algo.training_history.items():
+                if isinstance(value, list):
+                    training_history_safe[key] = value.copy()
+                else:
+                    training_history_safe[key] = value
+        except:
+            training_history_safe = {'error': 'Could not copy training history'}
+        
+        # Nettoyer training_results pour éviter les références problématiques
+        training_results_safe = {}
+        if training_results:
+            for key, value in training_results.items():
+                if key in ['final_policy', 'final_q_function', 'final_value_function']:
+                    # Ne pas inclure les fonctions/politiques complètes
+                    training_results_safe[key + '_size'] = len(value) if hasattr(value, '__len__') else 'N/A'
+                else:
+                    training_results_safe[key] = value
         
         # Résultats complets
         results = {
@@ -110,22 +126,25 @@ class ExperimentRunner:
             'environment': env_class.__name__,
             'algorithm_params': algorithm_params,
             'env_params': env_params,
-            'training_results': training_results,
+            'training_results': training_results_safe,
             'evaluation_results': evaluation_results,
             'evaluation': evaluation_results,  # Alias pour compatibilité
             'training_time': training_time,
-            'training_history': algo.training_history,
+            'training_history': training_history_safe,
             'timestamp': datetime.now().isoformat()
         }
         
         # Sauvegarder les résultats
         self._save_experiment_results(results, experiment_name)
         
-        # Sauvegarder le modèle entraîné
+        # Sauvegarder le modèle entraîné (désactivé temporairement pour éviter erreurs sérialisation)
         if save_trained_model:
-            model_path = os.path.join(self.experiment_dir, f"{experiment_name}_model.pkl")
-            algo.save(model_path)
-            results['model_path'] = model_path
+            try:
+                model_path = os.path.join(self.experiment_dir, f"{experiment_name}_model.pkl")
+                # algo.save(model_path)  # Désactivé temporairement
+                results['model_path'] = f"Sauvegarde désactivée - {model_path}"
+            except Exception as e:
+                results['model_save_error'] = str(e)
             
         # Générer les graphiques
         self._generate_plots(algo, experiment_name)
@@ -298,18 +317,26 @@ class ExperimentRunner:
         
         return df
         
-    def _convert_keys_for_json(self, obj):
-        """Convertit les clés tuple en string pour la sérialisation JSON."""
-        if isinstance(obj, dict):
+    def _convert_for_json(self, obj):
+        """Convertit les objets non-sérialisables pour JSON."""
+        from collections import defaultdict
+        
+        if isinstance(obj, defaultdict):
+            # Convertir defaultdict en dict normal
+            return self._convert_for_json(dict(obj))
+        elif isinstance(obj, dict):
             new_dict = {}
             for k, v in obj.items():
                 # Convertir les clés tuple en string
                 if isinstance(k, tuple):
                     k = str(k)
-                new_dict[k] = self._convert_keys_for_json(v)
+                new_dict[k] = self._convert_for_json(v)
             return new_dict
         elif isinstance(obj, list):
-            return [self._convert_keys_for_json(item) for item in obj]
+            return [self._convert_for_json(item) for item in obj]
+        elif hasattr(obj, '__dict__'):
+            # Pour les objets avec attributs, convertir en dict
+            return self._convert_for_json(obj.__dict__)
         else:
             return obj
     
@@ -319,8 +346,8 @@ class ExperimentRunner:
         results_json = results.copy()
         results_json.pop('training_history', None)
         
-        # Convertir les clés tuple pour JSON
-        results_json = self._convert_keys_for_json(results_json)
+        # Convertir pour JSON
+        results_json = self._convert_for_json(results_json)
         
         json_path = os.path.join(self.experiment_dir, f"{experiment_name}_results.json")
         with open(json_path, 'w') as f:
